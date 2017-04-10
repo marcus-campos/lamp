@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #######################################
-# Bash script to install an AMP stack and PHPMyAdmin plus tweaks. For Debian based systems.
+# Bash script to install an AMP stack and composer. For Debian based systems.
 # Write by @marcus-campos from https://github.com/marcus-campos
 # Based on @AamnahAkram from http://aamnah.com
 
@@ -28,27 +28,29 @@ echo -e "$Cyan \n Installing Apache2 $Color_Off"
 sudo apt-get install apache2 apache2-doc apache2-mpm-prefork apache2-utils libexpat1 ssl-cert -y
 
 echo -e "$Cyan \n Installing PHP & Requirements $Color_Off"
-sudo apt-get install libapache2-mod-php php php-common php-curl php-dev php-gd php-idn php-pear php-imagick php-mcrypt php-mysql php-ps php-pspell php-recode php-xsl php-mbstring php-xml -y
+sudo apt-get install libapache2-mod-php php php-common php-curl php-dev php-gd php-idn php-pear php-imagick php-mcrypt php-mysql php-ps php-pspell php-recode php-xsl php-mbstring php-xml php-intl -y
 
 echo -e "$Cyan \n Installing MySQL $Color_Off"
 sudo apt-get install mysql-server mysql-client libmysqlclient15.dev -y
 
-echo -e "$Cyan \n Installing phpMyAdmin $Color_Off"
-sudo apt-get install phpmyadmin -y
 
 echo -e "$Cyan \n Verifying installs$Color_Off"
 sudo apt-get install apache2 libapache2-mod-php php mysql-server php-pear php-mysql mysql-client mysql-server php-mysql php-gd -y
+
+## Install composer
+echo -e "$Cyan \n Installing composer $Color_Off"
+sudo apt-get install composer -y
 
 ## TWEAKS and Settings
 # Permissions
 echo -e "$Cyan \n Permissions for /var/www $Color_Off"
 sudo chown -R www-data:www-data /var/www
+sudo chmod 777 /var/www -R
 echo -e "$Green \n Permissions have been set $Color_Off"
 
 # Enabling Mod Rewrite, required for WordPress permalinks and .htaccess files
 echo -e "$Cyan \n Enabling Modules $Color_Off"
 sudo a2enmod rewrite
-sudo php5enmod mcrypt
 
 # Restart Apache
 echo -e "$Cyan \n Restarting Apache $Color_Off"
