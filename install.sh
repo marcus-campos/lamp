@@ -21,29 +21,37 @@ Cyan='\033[0;36m'         # Cyan
 
 # Update packages and Upgrade system
 echo -e "$Cyan \n Updating System.. $Color_Off"
-apt-get update -y && apt-get upgrade -y
+sudo apt-get update -y && sudo apt-get upgrade -y
 
 ## Install AMP
 echo -e "$Cyan \n Installing Apache2 $Color_Off"
-apt-get install apache2 apache2-doc apache2-mpm-prefork apache2-utils libexpat1 ssl-cert -y
+sudo apt-get install apache2 apache2-doc apache2-mpm-prefork apache2-utils libexpat1 ssl-cert -y
 
 echo -e "$Cyan \n Installing PHP & Requirements $Color_Off"
-apt-get install libapache2-mod-php php php-common php-curl php-dev php-gd php-idn php-pear php-imagick php-mcrypt php-mysql php-ps php-pspell php-recode php-xsl php-mbstring php-xml php-intl -y
+sudo apt-get install libapache2-mod-php php php-common php-curl php-dev php-gd php-idn php-pear php-imagick php-mcrypt php-mysql php-ps php-pspell php-recode php-xsl php-mbstring php-xml php-intl -y
+
+echo -e "$Cyan \n Installing MySQL $Color_Off"
+sudo apt-get install mysql-server mysql-client libmysqlclient15.dev -y
+
 
 echo -e "$Cyan \n Verifying installs$Color_Off"
-apt-get install apache2 libapache2-mod-php php php-pear php-mysql php-mysql php-gd -y
+sudo apt-get install apache2 libapache2-mod-php php mysql-server php-pear php-mysql mysql-client mysql-server php-mysql php-gd -y
+
+## Install composer
+echo -e "$Cyan \n Installing composer $Color_Off"
+sudo apt-get install composer -y
 
 ## TWEAKS and Settings
 # Permissions
 echo -e "$Cyan \n Permissions for /var/www $Color_Off"
-chown -R www-data:www-data /var/www
-chmod 777 /var/www -R
+sudo chown -R www-data:www-data /var/www
+sudo chmod 777 /var/www -R
 echo -e "$Green \n Permissions have been set $Color_Off"
 
 # Enabling Mod Rewrite, required for WordPress permalinks and .htaccess files
 echo -e "$Cyan \n Enabling Modules $Color_Off"
-a2enmod rewrite
+sudo a2enmod rewrite
 
 # Restart Apache
 echo -e "$Cyan \n Restarting Apache $Color_Off"
-service apache2 restart
+sudo service apache2 restart
