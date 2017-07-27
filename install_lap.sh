@@ -30,16 +30,8 @@ sudo apt-get install apache2 apache2-doc apache2-mpm-prefork apache2-utils libex
 echo -e "$Cyan \n Installing PHP & Requirements $Color_Off"
 sudo apt-get install libapache2-mod-php php php-common php-curl php-dev php-gd php-idn php-pear php-imagick php-mcrypt php-mysql php-ps php-pspell php-recode php-xsl php-mbstring php-xml php-intl -y
 
-echo -e "$Cyan \n Installing MySQL $Color_Off"
-sudo apt-get install mysql-server mysql-client libmysqlclient15.dev -y
-
-
 echo -e "$Cyan \n Verifying installs$Color_Off"
 sudo apt-get install apache2 libapache2-mod-php php mysql-server php-pear php-mysql mysql-client mysql-server php-mysql php-gd -y
-
-## Install composer
-echo -e "$Cyan \n Installing composer $Color_Off"
-sudo apt-get install composer -y
 
 ## TWEAKS and Settings
 # Permissions
