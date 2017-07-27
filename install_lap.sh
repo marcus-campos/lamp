@@ -31,7 +31,7 @@ echo -e "$Cyan \n Installing PHP & Requirements $Color_Off"
 apt-get install libapache2-mod-php php php-common php-curl php-dev php-gd php-idn php-pear php-imagick php-mcrypt php-mysql php-ps php-pspell php-recode php-xsl php-mbstring php-xml php-intl -y
 
 echo -e "$Cyan \n Verifying installs$Color_Off"
-apt-get install apache2 libapache2-mod-php php mysql-server php-pear php-mysql php-mysql php-gd -y
+apt-get install apache2 libapache2-mod-php php php-pear php-mysql php-mysql php-gd -y
 
 ## TWEAKS and Settings
 # Permissions
