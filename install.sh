@@ -35,7 +35,7 @@ sudo apt-get install mysql-server mysql-client libmysqlclient15.dev -y
 
 
 echo -e "$Cyan \n Verifying installs$Color_Off"
-sudo apt-get install apache2 libapache2-mod-php php mysql-server php-pear php-mysql mysql-client mysql-server php-mysql php-gd -y
+sudo apt-get install apache2 libapache2-mod-php php mysql-server php-pear php-mysql mysql-client mysql-server php-mysql php-gd php-redis php-xml php-mbstring php-curl php-zip -y
 
 ## Install composer
 echo -e "$Cyan \n Installing composer $Color_Off"
